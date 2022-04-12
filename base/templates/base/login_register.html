@@ -1,0 +1,58 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+<link rel="stylesheet" href="{% static 'styles/login_register.css' %}">
+<body>
+    <div class=" flex-r container">
+      <div class="flex-r login-wrapper">
+        <div class="login-text">
+          <div class="logo">
+            <span><i class="fab fa-xing"></i></span>
+            <span>CropX</span>
+          </div>
+          {% if page == 'login' %}
+          <h1>Sign In</h1>
+          {% else %}
+          <h1>Sign Up</h1>
+          {% endif %}
+
+  
+          <form class="flex-c" method="POST" action="">
+            {% csrf_token %}
+            <div class="input-box">
+              <span class="label">Username</span>
+              <div class=" flex-r input">
+                <input type="text" name="username" placeholder="Enter Username">
+                <i class="fas fa-at"></i>
+              </div>
+            </div>
+  
+            <div class="input-box">
+              <span class="label">Password</span>
+              <div class="flex-r input">
+                <input type="password" name="password" placeholder="8+ (a, A, 1, #)">
+                <i class="fas fa-lock"></i>
+              </div>
+            </div>
+            {% if page == 'login' %}
+            <input class="btn" type="submit" value="Login to Account">
+            <span class="extra-line">
+              <span>Haven`t Signed up yet?</span>
+              <a href="{% url 'register' %}">Signup</a>
+            </span>
+            {% else %}
+            <input class="btn" type="submit" value="Create an Account">
+            <span class="extra-line">
+              <span>Already have an account?</span>
+              <a href="{% url 'login' %}">Login</a>
+            </span>
+            {% endif %}
+
+          </form>
+  
+        </div>
+      </div>
+    </div>
+  </body>
+{% endblock content %}

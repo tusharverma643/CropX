@@ -1,0 +1,105 @@
+{% extends 'main.html' %}
+{% block content %}
+{% load static %}
+<div class="hero">
+<div class="hero__container">
+    <h1 class="hero__heading">Welcome <span>{{request.user}}</span></h1>
+</div>
+</div>
+<h1 id="ss" style="color: black">SOIL SENSE REPORT</h1>
+
+<div class="cards-list">
+
+    <div class="card 1">
+        <div class="card_image"> <img src="{% static 'images/humidity.jpg' %}"/> </div>
+        <div class="card_title title-white">
+          <p>Humidity: {{DisplayHumidity}}</p>
+        </div>
+      </div>
+
+      <div class="card 1">
+        <div class="card_image"> <img src="{% static 'images/baro.jpg' %}" /> </div>
+        <div class="card_title title-white">
+          <p>Atm. Pressure: {{atmosp}}</p>
+        </div>
+      </div>
+
+      <div class="card 1">
+        <div class="card_image"> <img src="{% static 'images/temp.jpg' %}" /> </div>
+        <div class="card_title title-white">
+          <p>Temperature {{MaxTemp}}</p>
+        </div>
+      </div> 
+
+      <!-- <div class="card 1">
+        <div class="card_image"> <img src="https://i.redd.it/b3esnz5ra34y.jpg" /> </div>
+        <div class="card_title title-white">
+          <p>Temp min = {{MinTemp}}</p>
+        </div>
+      </div> -->
+      
+      <div class="card 1">
+        <div class="card_image"> <img src="{% static 'images/wind.jpg' %}" /> </div>
+        <div class="card_title title-white">
+          <p>WindSpeed: {{WindSpeed}}</p>
+        </div>
+      </div>
+
+      <div class="card 1">
+        <div class="card_image"> <img src="{% static 'images/kc.jpg' %}" /> </div>
+        <div class="card_title title-white">
+          <p>Kc Value: {{Kc}}</p>
+        </div>
+      </div>
+
+    
+
+</div>
+
+<h1 id="ss" style="color: black">MODE SELECTION</h1>
+<br>
+<div id="modewalaform">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<form id="modeform" action="" method="POST">
+  {% csrf_token %}
+<div class="modecontainer">
+        
+        <div class="switch-holder">
+            <div class="switch-label">
+                <i class="fa fa-sun-o"></i><span>  Econo Mode</span>
+            </div>
+            <div class="switch-toggle">
+                <input type="radio" id="eco" name="mode" value=1 onchange="changemode()">
+                <label for="eco"></label>
+            </div>
+        </div>
+
+        <div class="switch-holder">
+            <div class="switch-label">
+                <i class="fa fa-rocket"></i><span>  Boost Mode</span>
+            </div>  
+            <div class="switch-toggle">
+                <input type="radio" id="boost" name="mode" value=2 onchange="changemode()">
+                <label for="boost"></label>
+            </div>
+        </div>
+
+        <div class="switch-holder">
+            <div class="switch-label">
+                <i class="fa fa-android"></i></i><span>  Meteoro Sense</span>
+            </div>
+            <div class="switch-toggle">
+                <input type="radio" id="mets" name="mode" value=3 onchange="changemode()">
+                <label for="mets"></label>
+            </div>
+        </div>
+
+    </div>
+</form>
+
+
+
+</div>
+{% endblock content %} 

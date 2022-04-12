@@ -1,0 +1,35 @@
+{% load static %}
+<nav class="navbar">
+    <div class="navbar__container">
+      <a href="/" ><img id="navbar__logo" src="{% static 'images/logo.png' %}" width="20%" alt="logo" ></a>
+      <div class="navbar__toggle" id="mobile-menu">
+        <span class="bar"></span> <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+      <ul class="navbar__menu">
+        <li class="navbar__item">
+          <a href="/" class="navbar__links" id="home-page">Home</a>
+        </li>
+        {% if request.user.is_authenticated %}
+        <li class="navbar__item">
+          <a href="#modewalaform" class="navbar__links" id="about-page">Mode</a>
+        </li>
+        <li class="navbar__item">
+          <a href="{% url 'userprofile' %}" class="navbar__links" id="services-page"
+            >Profile</a >
+        </li>
+
+        <li class="navbar__btn">
+            <a href="{% url 'logout' %}" class="button" id="signup"
+              >Logout</a >
+          </li>
+          {% else %}
+          <li class="navbar__item">
+            <a href="{% url 'login' %}" class="navbar__links" id="services-page"
+              >Login</a >
+          </li>
+        {% endif %}
+      </ul>
+    </div>
+  </nav>
+  <hr>
